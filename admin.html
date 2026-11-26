@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111210">
+  <title>CH / Control Room — Concrete Hoops</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <script defer src="admin.js"></script>
+</head>
+<body class="admin-page">
+  <div class="page-noise" aria-hidden="true"></div>
+  <header class="admin-header">
+    <a class="brand-lockup" href="index.html"><span class="brand-mark"><b>C</b><b>H</b><i></i></span><span class="brand-name">CONCRETE<span>HOOPS®</span></span></a>
+    <span class="admin-kicker">CONTROL ROOM / 001</span>
+    <a class="back-shop" href="index.html">← BACK TO STORE</a>
+  </header>
+  <main class="admin-main">
+    <div class="admin-intro">
+      <span class="eyebrow">CREW ACCESS / STORE OPERATIONS</span>
+      <h1>THE<br><em>BACK OFFICE.</em></h1>
+      <p>Connect your Printify shop, check the connection, and pull your available shirts, shorts, hoodies, and other products into the Concrete Hoops storefront.</p>
+    </div>
+
+    <section class="admin-panel login-panel">
+      <div class="panel-heading"><span>01 / ADMIN ACCESS</span><span class="panel-chip">PRIVATE</span></div>
+      <label for="admin-key">ADMIN ACCESS KEY</label>
+      <div class="admin-key-row"><input id="admin-key" type="password" autocomplete="current-password" placeholder="Enter the ADMIN_KEY from your server settings"><button id="connect-button" type="button">CONNECT ↗</button></div>
+      <p class="panel-hint">This key protects the control room. It is not your Printify token. The key is only sent to your own server when you press Connect or Sync.</p>
+      <div id="connection-status" class="admin-feedback" role="status">NOT CONNECTED / ENTER YOUR ADMIN KEY TO CHECK THE PRINTIFY CONNECTION.</div>
+    </section>
+
+    <section class="admin-panel">
+      <div class="panel-heading"><span>02 / PRINTIFY SHOP</span><span class="panel-chip">API LINK</span></div>
+      <div id="shop-details" class="shop-details"><div class="shop-empty">CONNECT FIRST TO VIEW YOUR PRINTIFY SHOP.</div></div>
+      <div class="sync-row"><div><h2>SYNC THE DROP.</h2><p>Products marked visible in your Printify shop will be loaded into the public store.</p></div><button id="sync-button" type="button" disabled>SYNC PRODUCTS ↗</button></div>
+      <div id="sync-results" class="sync-results" aria-live="polite"></div>
+    </section>
+
+    <section class="admin-panel steps-panel">
+      <div class="panel-heading"><span>03 / FIRST-TIME SETUP</span><span class="panel-chip">READ THIS</span></div>
+      <ol class="setup-steps">
+        <li><strong>Create your API connection in Printify.</strong><span>In Printify, open My Profile → Connections → generate a Personal Access Token. Choose the scopes <code>shops.read</code>, <code>products.read</code>, and <code>products.write</code>. Copy the token once and keep it private.</span></li>
+        <li><strong>Add the token to your website server.</strong><span>In Render, open your Concrete Hoops service → Environment. Add <code>PRINTIFY_API_TOKEN</code>, <code>ADMIN_KEY</code>, and, when needed, <code>PRINTIFY_SHOP_ID</code>. Never paste the token into a website page or browser JavaScript.</span></li>
+        <li><strong>Connect an API store in Printify.</strong><span>Open My Stores → Add a new store → API. Connect this custom Concrete Hoops website.</span></li>
+        <li><strong>Make and publish your products.</strong><span>Use the Printify Product Creator to add your shirt design, select the garment and sizes, check the mockups and retail prices, then publish to your API store.</span></li>
+        <li><strong>Come back here and sync.</strong><span>Press Sync Products. Products that are marked visible and have available variants will appear in the shop. If you have multiple Printify shops, copy the correct API shop ID shown above into <code>PRINTIFY_SHOP_ID</code> in Render.</span></li>
+      </ol>
+      <div class="security-note"><strong>KEEP YOUR TOKEN PRIVATE.</strong> A Printify token can access your account. Never send it in chat, screenshots, public GitHub code, or a browser form. The token expires after one year and must then be replaced.</div>
+    </section>
+  </main>
+  <footer class="admin-footer"><span>CONCRETE HOOPS® / INTERNAL TOOLS</span><a href="index.html">RETURN TO THE COURT ↑</a></footer>
+</body>
+</html>
